@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Scroll 4.2</title>
+	<style>
+body { padding:0; margin:0; }
+
+.container {
+    height:100%;
+    padding:10em 0;
+    background-color: #000;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content: space-around;
+    scroll-snap-type: block mandatory;
+}
+    
+.list { 
+    display: flex;
+    align-items: center;
+    text-transform:uppercase;
+    font: 700 2em roboto, Arial;
+    color:white;
+    border: solid 1px #FFF;
+    opacity:.5;
+    height: 5em;
+    margin: 1rem 1rem;
+    scroll-snap-align: center;
+    transition:.6s cubic-bezier(.15,.5,.35,1);
+}
+
+.highlight--1{ 
+    transform:scale(1.5);
+    opacity:1;
+    text-shadow: 2px 0 6px;
+    transition:.5s ease-out;
+}
+
+footer { margin: 2em auto; }
+
+small {
+    text-transform: uppercase;
+    text-align: center;
+}	
+	</style>
+</head>
+<body>
+	<h1>Scroll effect 1 by 1</h1>
+
+	<div class="paragraphs">
+		<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+		<br />
+
+		<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+		<br />
+	</div>
+
+	<div class="container">
+		<div class="list">Element 1</div>
+		<div class="list">Element 2</div>
+		<div class="list">Element 3</div>
+		<div class="list">Element 4</div>
+		<div class="list">Element 5</div>
+		<div class="list">Element 6</div>
+		<div class="list">Element 7</div>
+		<div class="list">Element 8</div>
+		<div class="list">Element 9</div>
+		<div class="list">Element 10</div>
+		<div class="list">Element 11</div>
+		<div class="list">Element 12</div>
+	</div>
+
+	<footer>
+		<small>
+			<h4>Foot note here</h4>
+		</small>
+	</footer>
+
+	<script>
+const getElementsInContainer = ((docElm) => {
+    let viewportHeight = docElm.clientHeight;
+
+    return (e, opts) => {
+        var found = [], i;
+        
+        // if( e && e.type == 'resize' ) {
+        //     viewportHeight = docElm.clientHeight;
+        // }
+
+        for( i = opts.elements.length; i--; ) {
+            let elm = opts.elements[i],
+                position = elm.getBoundingClientRect(),
+                topPerc = position.top / viewportHeight * 100,
+                bottomPerc = position.bottom / viewportHeight * 100,
+                middle = (topPerc + bottomPerc)/2,
+                inViewport = middle > opts.zone[1] && middle < (100 - opts.zone[1]);
+
+            elm.classList.toggle(opts.markedClass, inViewport);
+
+            if( inViewport ){ found.push(elm); }
+        }
+    };
+})(document.documentElement);
+
+window.addEventListener('scroll', GetElements);
+
+function GetElements(e) {    
+    getElementsInContainer(e, {
+        elements    : document.querySelectorAll('.list'), 
+        markedClass : 'highlight--1',
+        zone        : [35, 35] // percentage distance from top & bottom
+    });
+}
+	</script>
+</body>
+</html>
