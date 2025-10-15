@@ -28,6 +28,10 @@ section {
 	scroll-margin-top: 140px;
 }
 
+#sec1_mobile, #sec2_mobile, #sec3_mobile {
+	scroll-margin-top: 140px;
+}
+
 .sec-1 { background-color: aquamarine; }
 
 .sec-2 { background-color: chartreuse; }
@@ -73,41 +77,60 @@ small {
     text-transform: uppercase;
     text-align: center;
 }	
+
+@media screen and (min-width: 767px) {
+	.desktop-only { display: block; }
+	.mobile-only { display: none; }	
+}
+
+@media screen and (max-width: 767px) {
+	.mobile-only { display: block; }
+	.desktop-only { display: none; }	
+}
 	</style>
 </head>
 <body>
-	<header>
+	<header class="mobile-only">
+		<h2>Header nav mobile</h2>	
+		<p><a href="#sec1_mobile">Section 1</a> | <a href="#sec2_mobile">Section 2</a> | <a href="#sec3_mobile">Section 3</a></p>
+	</header>
+
+	<header class="desktop-only">
 		<h2>Header navigation</h2>	
 		<p><a href="#sec1">Section 1</a> | <a href="#sec2">Section 2</a> | <a href="#sec3">Section 3</a></p>
 	</header>
 
 	<section class="sec-1" id="sec1">
-		<h2>1<sup>st</sup> Section</h2>
+		<div id="sec1_mobile" name="sec1_mobile">
+			<h2>1<sup>st</sup> Section</h2>
+			
+			<div class="paragraphs">
+				<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+				<br />
 		
-		<div class="paragraphs">
-			<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
-			<br />
-	
-			<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
-			<br />
+				<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+				<br />
+			</div>
 		</div>
 	</section>
 	
 	<section class="sec-2" id="sec2">
-		<h2>Scroll effect 1 by 1</h2>
+		<div id="sec2_mobile" name="sec2_mobile">
+			<h2>Scroll effect 1 by 1</h2>
+			
+			<div class="paragraphs">
+				<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+				<br />
 		
-		<div class="paragraphs">
-			<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
-			<br />
-	
-			<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
-			<br />
+				<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+				<br />
+			</div>
 		</div>
 	</section>
 
 	<div class="container">
 		<section id="sec3">
-			<h2>Squares section</h2>
+			<h2 id="sec3_mobile" name="sec3_mobile">Squares section</h2>
 		</section>
 		<div class="list">Element 1</div>
 		<div class="list">Element 2</div>
