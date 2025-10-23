@@ -178,8 +178,6 @@ const getElementsInContainer = ((docElm) => {
     };
 })(document.documentElement);
 
-window.addEventListener('scroll', GetElements);
-
 function GetElements(e) {    
     getElementsInContainer(e, {
         elements    : document.querySelectorAll('.list'),
@@ -187,6 +185,16 @@ function GetElements(e) {
         zone        : [35, 35] // percentage distance from top & bottom
     });
 }
+
+window.addEventListener('scroll', GetElements);
+
+window.addEventListener('load', () => {
+	let elWidth = window.innerWidth;
+	let elHeight = window.innerHeight;
+	
+	alert("window width: "+elWidth+" & height: "+elHeight);
+});
 	</script>
 </body>
 </html>
+
